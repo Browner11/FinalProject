@@ -5,7 +5,9 @@
   This is the homepage of Bookishly
 */
   // Reguire database connection
-  require('connect.php');
+  //require('connect.php');
+
+  require('server.php');
 
   // gather all data from our book table
   $query = "SELECT * FROM book";
@@ -13,9 +15,31 @@
   $statement = $db->prepare($query);
   $statement->execute();
 
+  $genreQuery = "SELECT * FROM genre";
+
+  $genreStatement = $db->prepare($genreQuery);
+  $genreStatement->execute();
+
 ?>
 
-  <h3>Recently Posted</h3>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+  <?php if(isset($_SESSION['success'])): ?>
+    <h3><?= $_SESSION['success'] ?></h3>
+    <?php unset($_SESSION['success']); ?>
+  <?php endif ?>
+
+  <?php if(isset($_SESSION['username'])): ?>
+    <p>Welcome <?= $_SESSION['username'] ?></p>
+    <p><a class="red" href="index.php?logout='1'">Logout</a></p>
+  <?php endif ?>
+
+  <h3>Recently Posted Books</h3>
 
     <fieldset>
             <?php if ($statement->rowCount() == 0) :?>
@@ -25,6 +49,19 @@
                     <?php while($row = $statement->fetch()):?>
                         <li>
                           <?= $row['Title'] ?> by <?= $row['Author'] ?>
+                        </li>
+                    <?php endwhile ?>    
+               </ul>
+           <?php endif ?> 
+    </fieldset>
+    <fieldset>
+            <?php if ($genreStatement->rowCount() == 0) :?>
+                <h1>No Genres found.</h1>
+            <?php else :?>
+                <ul>
+                    <?php while($row = $genreStatement->fetch()):?>
+                        <li>
+                          <?= $row['Genre'] ?>
                         </li>
                     <?php endwhile ?>    
                </ul>
