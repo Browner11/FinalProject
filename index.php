@@ -26,8 +26,22 @@
 <html>
 <head>
   <title></title>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+  <img id="logo" src="images/Bookishly_logo.png" alt="Logo">
+  <nav>
+    
+    
+    
+    <ul>
+      <li><a id="currentpage" href="index.html">Home</a></li>
+      <li><a href="#">Genres</a></li>
+      <li><a href="#">Recent</a></li>
+    </ul>
+    
+  </nav>  
 
   <?php if(isset($_SESSION['success'])): ?>
     <h3><?= $_SESSION['success'] ?></h3>

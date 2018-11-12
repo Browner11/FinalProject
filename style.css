@@ -1,0 +1,53 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-size: 100%;
+    background: #F8F8FF;
+}
+
+nav {
+	margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(0,0,0,.5);
+    width: 100%;
+    
+    text-align: center;
+
+
+}
+
+nav ul {
+    list-style-type: none;
+    display: inline;
+
+}
+
+nav li {
+    display: inline;
+}
+
+nav li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #111;
+}
+
+nav li a:focus {
+    color: #ff2b00;
+}
+
+
+img {
+    height: 15%;
+    width: 15%;
+}
