@@ -27,7 +27,7 @@
 <head>
   <title></title>
 
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="formstyle.css">
 </head>
 <body>
   <img id="logo" src="images/Bookishly_logo.png" alt="Logo">
@@ -39,6 +39,8 @@
       <li><a id="currentpage" href="index.php">Home</a></li>
       <li><a href="#">Genres</a></li>
       <li><a href="newBook.php">New Book</a></li>
+      <li><a class="right" href="register.php">Register</a></li>
+      <li><a class="right" href="login.php">Login</a></li>
     </ul>
     
   </nav>  

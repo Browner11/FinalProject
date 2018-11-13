@@ -39,6 +39,7 @@
   		$statement->execute();
 
   		$_SESSION['username'] = $username;
+  		$_SESSION['login'] = 1;
   		$_SESSION['success'] = "You are now logged in";
   		header('location: index.php');
 		}
@@ -72,6 +73,7 @@ if (isset($_POST['login'])) {
 			{
 				//log user in
 				$_SESSION['username'] = $username;
+				$_SESSION['login'] = 1;
 	  			$_SESSION['success'] = "You are now logged in";
 	  			header('location: index.php');
 			} else {
@@ -90,6 +92,7 @@ if (isset($_POST['login'])) {
 if (isset($_GET['logout'])) {
 	session_destroy();
 	unset($_SESSION['username']);
+	unset($_SESSION['login']);
 	header('location: login.php');
 }
 

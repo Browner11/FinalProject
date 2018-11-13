@@ -45,34 +45,41 @@
 
     // if New Book form is submitted
 if(isset($_POST['newBook'])){
- 	$isbn = $_POST['isbn'];
- 	$genre = $_POST['genre'];
- 	$title = $_POST['title'];
- 	$author = $_POST['author'];
- 	$released = $_POST['released'];
- 	$image = $_FILES['image']['name'];
+	if (isset($_SESSION['login'])) {
+		
+	 	$genre = $_POST['genre'];
+	 	$title = $_POST['title'];
+	 	$author = $_POST['author'];
+	 	$released = $_POST['released'];
+	 	$image = $_FILES['image']['name'];
 
- 	unset($_SESSION['bookSuccess']);
+	 	unset($_SESSION['bookSuccess']);
 
- 	//ensure form fields are filled properly
- 	if (empty($isbn)) {
- 		array_push($errors, "ISBN is required");
+	 	//ensure form fields are filled properly
+	 	
+		if (empty($title)) {
+	 		array_push($errors, "Title is required");
+		}
+		if (empty($author)) {
+	 		array_push($errors, "Author is required");
+		}
+		
+
+		//if there are no errors, save book to the database
+		if (count($errors) == 0) {
+			$query = "INSERT INTO book (Title, Author, ReleaseYear, Genre, CoverImg) VALUES ('$title', '$author', '$released', '$genre', '$image')";
+
+			$statement = $db->prepare($query);
+	  		$statement->execute();
+	  		
+	  		$_SESSION['success'] = "You created a new book.";
+
+	  		header('location: index.php');
+		}
 	}
-	if (empty($title)) {
- 		array_push($errors, "Title is required");
-	}
-	
-
-	//if there are no errors, save book to the database
-	if (count($errors) == 0) {
-		$query = "INSERT INTO book (ISBN, Title, Author, ReleaseYear, Genre, CoverImg) VALUES ('$isbn', '$title', '$author', '$released', '$genre', '$image')";
-
-		$statement = $db->prepare($query);
-  		$statement->execute();
-  		
-  		$_SESSION['success'] = "You created a new book.";
-
-  		header('location: index.php');
+	else
+	{
+		array_push($errors, "You must be logged in first.");
 	}
 
 }
@@ -86,8 +93,25 @@ if(isset($_POST['newBook'])){
 	<title>Submit Book</title>
 	<link rel="stylesheet" type="text/css" href="formstyle.css">
 </head>
-	<div class="header">Submit Book</div>
 <body>
+	<img id="logo" src="images/Bookishly_logo.png" alt="Logo">
+  <nav> 
+    <ul>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="#">Genres</a></li>
+      <li><a id="currentpage" href="newBook.php">New Book</a></li>
+      <li><a class="right" href="register.php">Register</a></li>
+      <li><a class="right" href="login.php">Login</a></li>
+    </ul>    
+  </nav> 
+  <?php if(!isset($_SESSION['login'])): ?>
+  <br>
+  <p  class="message">You must be logged in to use this page.</p>
+  <p class="message">
+		Already have an account? <a href="login.php">Log in</a>
+  </p>
+  <?php endif ?>
+  <div class="header">Submit Book</div>
 	<form method="post" action="newBook.php" enctype="multipart/form-data">
 		<!-- errors -->
 		<?php include('errors.php'); ?>
@@ -95,10 +119,7 @@ if(isset($_POST['newBook'])){
 			<label for="image">Cover Image:</label>
 			<input type="file" id="image" name="image">
 		</div>
-		<div class="input-group">
-			<label for="isbn">ISBN:</label>
-			<input type="number" id="isbn" name="isbn">
-		</div>
+		
 		<div class="input-group">
 			<label for="genre">Genre:</label>
 			<select id="genre" name="genre">
@@ -124,10 +145,7 @@ if(isset($_POST['newBook'])){
 		<div class="input-group">
 			<button type="submit" id="newBook" name="newBook" class="btn">Submit Book </button>
 		</div>
-		<p>
-			Already have an account? <a href="login.php">Log in</a>
-		</p>
-
+		
 	</form>
 
 
