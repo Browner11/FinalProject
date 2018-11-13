@@ -11,7 +11,6 @@
 
   // gather all data from our book table
   $query = "SELECT * FROM book";
-
   $statement = $db->prepare($query);
   $statement->execute();
 
@@ -29,7 +28,7 @@
 
   <link rel="stylesheet" type="text/css" href="formstyle.css">
 </head>
-<body>  
+<body>
   <?php include('nav.php'); ?>
 
   <?php if(isset($_SESSION['success'])): ?>
@@ -42,17 +41,25 @@
     <p><a class="red" href="index.php?logout='1'">Logout</a></p>
   <?php endif ?>
 
-  <h3>Recently Posted Books</h3>
-
+  <h3>All Genres</h3>    
     <fieldset>
-            <?php if ($statement->rowCount() == 0) :?>
-                <h1>No posts found.</h1>
+            <?php if ($genreStatement->rowCount() == 0) :?>
+                <h1>No Genres found.</h1>
             <?php else :?>
                 <ul>
-                    <?php while($row = $statement->fetch()):?>
-                        <li>
-                          <?= $row['Title'] ?> by <?= $row['Author'] ?>
-                        </li>
+                    <?php while($row = $genreStatement->fetch()):?>
+                        <li class="boldgenre">
+                          <?= $row['Genre'] ?>
+                        </li>   
+                        <!-- <ul>
+                        <?php while($newRow = $statement->fetch()):?>
+                           <?php if($newRow['Genre'] == $row['Genre']): ?>
+                              <li>
+                                <?=$newRow['Title'] ?> by <?= $newRow['Author'] ?>
+                              </li>
+                           <?php endif ?>
+                        <?php endwhile ?> 
+                        </ul>                -->  
                     <?php endwhile ?>    
                </ul>
            <?php endif ?> 

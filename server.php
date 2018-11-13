@@ -78,8 +78,7 @@ if (isset($_POST['login'])) {
 	  			header('location: index.php');
 			} else {
 				array_push($errors, "Invalid username or password");
-				echo $row['Password'];
-				echo $password;			
+						
 
 			}
 			

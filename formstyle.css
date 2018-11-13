@@ -5,7 +5,7 @@
 
 body {
 	font-size: 100%;
-	background: #F8F8FF;
+	background-color: #879ec1;
 }
 
 #logo {
@@ -83,10 +83,7 @@ nav {
     overflow: hidden;
     background-color: rgba(0,0,0,.5);
     width: 100%;
-
     text-align: center;
-
-
 }
 
 nav ul {
@@ -130,10 +127,14 @@ nav li a:focus {
 .message {
 	text-align: center;
 	font-size: 20px;
-	color: red;
+	color: #bc0f26;
 }
 
 .right {
 	float: right;
 }
 
+.boldgenre {
+	font-weight: bold;
+	font-size: 25px;
+}

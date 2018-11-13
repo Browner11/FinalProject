@@ -34,12 +34,17 @@
     $image_upload_detected = isset($_FILES['image']) && ($_FILES['image']['error'] === 0);
     $upload_error_detected = isset($_FILES['image']) && ($_FILES['image']['error'] > 0);
 
+
+    $isImage = true;
+
     if ($image_upload_detected) { 
+    	$isImage = false;
         $image_filename        = $_FILES['image']['name'];
         $temporary_image_path  = $_FILES['image']['tmp_name'];
         $new_image_path        = file_upload_path($image_filename);
         if (file_is_an_image($temporary_image_path, $new_image_path)) {
             move_uploaded_file($temporary_image_path, $new_image_path);
+            $isImage = true;
         }
     }
 
@@ -62,6 +67,9 @@ if(isset($_POST['newBook'])){
 		}
 		if (empty($author)) {
 	 		array_push($errors, "Author is required");
+		}
+		if (!$isImage) {
+	 		array_push($errors, "Uploaded file is not a valid image");
 		}
 		
 
@@ -94,16 +102,7 @@ if(isset($_POST['newBook'])){
 	<link rel="stylesheet" type="text/css" href="formstyle.css">
 </head>
 <body>
-	<img id="logo" src="images/Bookishly_logo.png" alt="Logo">
-  <nav> 
-    <ul>
-      <li><a href="index.php">Home</a></li>
-      <li><a href="#">Genres</a></li>
-      <li><a id="currentpage" href="newBook.php">New Book</a></li>
-      <li><a class="right" href="register.php">Register</a></li>
-      <li><a class="right" href="login.php">Login</a></li>
-    </ul>    
-  </nav> 
+	<?php include('nav.php'); ?>
   <?php if(!isset($_SESSION['login'])): ?>
   <br>
   <p  class="message">You must be logged in to use this page.</p>
