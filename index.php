@@ -36,9 +36,9 @@
     
     
     <ul>
-      <li><a id="currentpage" href="index.html">Home</a></li>
+      <li><a id="currentpage" href="index.php">Home</a></li>
       <li><a href="#">Genres</a></li>
-      <li><a href="#">Recent</a></li>
+      <li><a href="newBook.php">New Book</a></li>
     </ul>
     
   </nav>  

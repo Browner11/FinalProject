@@ -41,9 +41,8 @@
   		$_SESSION['username'] = $username;
   		$_SESSION['success'] = "You are now logged in";
   		header('location: index.php');
+		}
 	}
-
-}
 
 // user login from login page
 if (isset($_POST['login'])) {
@@ -86,7 +85,6 @@ if (isset($_POST['login'])) {
 	}
 }
 
-
 // logout
 
 if (isset($_GET['logout'])) {
@@ -94,6 +92,7 @@ if (isset($_GET['logout'])) {
 	unset($_SESSION['username']);
 	header('location: login.php');
 }
+
 
 
 

@@ -14,7 +14,7 @@ nav {
     overflow: hidden;
     background-color: rgba(0,0,0,.5);
     width: 100%;
-    
+
     text-align: center;
 
 
@@ -47,7 +47,13 @@ nav li a:focus {
 }
 
 
-img {
+#logo {
     height: 15%;
     width: 15%;
+}
+
+#currentpage {
+    color: #ff2b00;
+    text-decoration: none;
+    outline: 0;
 }
