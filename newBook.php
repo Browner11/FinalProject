@@ -37,13 +37,16 @@
 
     $isImage = true;
 
+    
     if ($image_upload_detected) { 
     	$isImage = false;
+    	$image = $_FILES['image'];
         $image_filename        = $_FILES['image']['name'];
         $temporary_image_path  = $_FILES['image']['tmp_name'];
         $new_image_path        = file_upload_path($image_filename);
         if (file_is_an_image($temporary_image_path, $new_image_path)) {
-            move_uploaded_file($temporary_image_path, $new_image_path);
+			
+			move_uploaded_file($temporary_image_path, $new_image_path);
             $isImage = true;
         }
     }

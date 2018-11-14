@@ -13,6 +13,7 @@
   $query = "SELECT * FROM book";
   $statement = $db->prepare($query);
   $statement->execute();
+  $newRow = $statement->fetch();
 
   $genreQuery = "SELECT * FROM genre";
 
@@ -31,16 +32,6 @@
 <body>
   <?php include('nav.php'); ?>
 
-  <?php if(isset($_SESSION['success'])): ?>
-    <h3><?= $_SESSION['success'] ?></h3>
-    <?php unset($_SESSION['success']); ?>
-  <?php endif ?>
-
-  <?php if(isset($_SESSION['username'])): ?>
-    <p>Welcome <?= $_SESSION['username'] ?></p>
-    <p><a class="red" href="index.php?logout='1'">Logout</a></p>
-  <?php endif ?>
-
   <h3>All Genres</h3>    
     <fieldset>
             <?php if ($genreStatement->rowCount() == 0) :?>
@@ -52,14 +43,14 @@
                           <?= $row['Genre'] ?>
                         </li>   
                         <!-- <ul>
-                        <?php while($newRow = $statement->fetch()):?>
-                           <?php if($newRow['Genre'] == $row['Genre']): ?>
+                        <?php foreach ($newRow as $key ):?>
+                           <?php if($row['Genre'] == $newRow['Genre']): ?>
                               <li>
                                 <?=$newRow['Title'] ?> by <?= $newRow['Author'] ?>
                               </li>
                            <?php endif ?>
-                        <?php endwhile ?> 
-                        </ul>                -->  
+                        <?php endforeach ?> 
+                        </ul>  -->
                     <?php endwhile ?>    
                </ul>
            <?php endif ?> 

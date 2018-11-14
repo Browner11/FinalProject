@@ -37,11 +37,6 @@
     <?php unset($_SESSION['success']); ?>
   <?php endif ?>
 
-  <?php if(isset($_SESSION['username'])): ?>
-    <p>Welcome <?= $_SESSION['username'] ?></p>
-    <p><a class="red" href="index.php?logout='1'">Logout</a></p>
-  <?php endif ?>
-
   <h3>Recently Posted Books</h3>
 
     <fieldset>
@@ -51,7 +46,8 @@
                 <ul>
                     <?php while($row = $statement->fetch()):?>
                         <li>
-                          <?= $row['Title'] ?> by <?= $row['Author'] ?>
+                          <?php $rowID = $row['ISBN'] ?>
+                          <?= "<a href=fullPage.php?ISBN=$rowID>" . $row['Title'] . "</a>" . " by " . $row['Author'] ;?>
                         </li>
                     <?php endwhile ?>    
                </ul>

@@ -131,7 +131,20 @@ nav li a:focus {
 }
 
 .right {
-	float: right;
+	float: right;	
+}
+
+.left {
+	float: left;
+}
+
+.welcome {
+	display: inline;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: right;
 }
 
 .boldgenre {
