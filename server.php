@@ -9,7 +9,7 @@
 	$errors = array();
 
  // if register button is clicked
-	if(isset($_POST['register'])){
+if(isset($_POST['register'])){
  	$username = $_POST['username'];
  	$email = $_POST['email'];
  	$password = $_POST['password'];
@@ -43,7 +43,8 @@
   		$_SESSION['success'] = "You are now logged in";
   		header('location: index.php');
 		}
-	}
+}
+
 
 // user login from login page
 if (isset($_POST['login'])) {

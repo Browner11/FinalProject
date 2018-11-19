@@ -14,7 +14,7 @@
 <body>
 	<?php include('nav.php'); ?>
 	<div class="header">Register</div>
-	<form method="post" action="register.php">
+	<form class="form" method="post" action="register.php">
 		<!-- errors -->
 		<?php include('errors.php'); ?>
 		<div class="input-group">

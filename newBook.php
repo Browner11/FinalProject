@@ -2,12 +2,15 @@
 	
 	include('server.php');
 
-	$genreQuery = "SELECT * FROM genre";
+  $genreQuery = "SELECT * FROM genre";
 
   $genreStatement = $db->prepare($genreQuery);
   $genreStatement->execute();
 
-  function file_upload_path($original_filename, $upload_subfolder_name = 'uploads') {
+  $isValid = null;
+    // file_upload_path() - Safely build a path String that uses slashes appropriate for our OS.
+    // Default upload path is an 'uploads' sub-folder in the current folder.
+    function file_upload_path($original_filename, $upload_subfolder_name = 'uploads') {
        $current_folder = dirname(__FILE__);
        
        // Build an array of paths segment names to be joins using OS specific slashes.
@@ -31,23 +34,30 @@
         return $file_extension_is_valid && $mime_type_is_valid;
     }
     
-    $image_upload_detected = isset($_FILES['image']) && ($_FILES['image']['error'] === 0);
-    $upload_error_detected = isset($_FILES['image']) && ($_FILES['image']['error'] > 0);
-
-
-    $isImage = true;
-
     
-    if ($image_upload_detected) { 
-    	$isImage = false;
-    	$image = $_FILES['image'];
-        $image_filename        = $_FILES['image']['name'];
-        $temporary_image_path  = $_FILES['image']['tmp_name'];
-        $new_image_path        = file_upload_path($image_filename);
-        if (file_is_an_image($temporary_image_path, $new_image_path)) {
-			
-			move_uploaded_file($temporary_image_path, $new_image_path);
-            $isImage = true;
+    $file_upload_detected = isset($_FILES['file']) && ($_FILES['file']['error'] === 0);
+    $upload_error_detected = isset($_FILES['file']) && ($_FILES['file']['error'] > 0);
+    if ($file_upload_detected) { 
+        $file_name        = $_FILES['file']['name'];
+        $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+        $file_filename        = basename($file_name, '.' . $file_ext);
+        $temporary_file_path  = $_FILES['file']['tmp_name'];
+        $new_file_path        = file_upload_path($file_name);
+        if (file_is_an_image($temporary_file_path, $new_file_path)) 
+        {        
+        	$isValid = true;
+        	//includes ImageResize library    
+        	include 'resizeLibrary/ImageResize.php';
+
+            //resizes and saves thumbnail version of submitted image
+        	$image = new \Gumlet\ImageResize($temporary_file_path);
+			$image->resize(325,500);
+			$image->save(file_upload_path($file_filename . '.' . $file_ext));
+
+        }
+        else
+        {
+        	$isValid = false;
         }
     }
 
@@ -59,7 +69,7 @@ if(isset($_POST['newBook'])){
 	 	$title = $_POST['title'];
 	 	$author = $_POST['author'];
 	 	$released = $_POST['released'];
-	 	$image = $_FILES['image']['name'];
+	 	$image = $_FILES['file']['name'];
 
 	 	unset($_SESSION['bookSuccess']);
 
@@ -71,7 +81,7 @@ if(isset($_POST['newBook'])){
 		if (empty($author)) {
 	 		array_push($errors, "Author is required");
 		}
-		if (!$isImage) {
+		if (!$isValid) {
 	 		array_push($errors, "Uploaded file is not a valid image");
 		}
 		
@@ -114,12 +124,12 @@ if(isset($_POST['newBook'])){
   </p>
   <?php endif ?>
   <div class="header">Submit Book</div>
-	<form method="post" action="newBook.php" enctype="multipart/form-data">
+	<form class="form" method="post" action="newBook.php" enctype="multipart/form-data">
 		<!-- errors -->
 		<?php include('errors.php'); ?>
 		<div class="input-group">
-			<label for="image">Cover Image:</label>
-			<input type="file" id="image" name="image">
+			<label for="file">Cover Image:</label>
+			<input type="file" id="file" name="file">
 		</div>
 		
 		<div class="input-group">

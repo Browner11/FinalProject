@@ -5,7 +5,7 @@
 
 body {
 	font-size: 100%;
-	background-color: #879ec1;
+	background-color: #e0cbaf;
 }
 
 #logo {
@@ -25,7 +25,7 @@ body {
 	padding: 20px;
 }
 
-form {
+.form {
 	width: 30%;
 	margin: 0px auto;
 	padding: 20px;
@@ -151,3 +151,30 @@ nav li a:focus {
 	font-weight: bold;
 	font-size: 25px;
 }
+
+.search {
+  width: 30%;
+  position: relative;
+  display: inline;
+    text-align: center;
+    margin: 14px 16px;
+    text-decoration: none;
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+
+
