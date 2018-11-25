@@ -17,7 +17,7 @@
 	<img id="logo" src="images/Bookishly_logo.png" alt="Logo">
   <nav>    
     <ul>
-      <li><a class="left" id="currentpage" href="index.php">Home</a></li>
+      <li><a class="left" href="index.php">Home</a></li>
       <div class="dropdown">
       	<button class="dropbtn">Genres 
       	<i class="fa fa-angle-down"></i>

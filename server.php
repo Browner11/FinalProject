@@ -51,6 +51,7 @@ if (isset($_POST['login'])) {
 	$username = $_POST['username'];
  	$password = $_POST['password'];
 
+
  	//ensure form fields are filled properly
  	if (empty($username)) {
  		array_push($errors, "Username is required");
@@ -74,8 +75,9 @@ if (isset($_POST['login'])) {
 			{
 				//log user in
 				$_SESSION['username'] = $username;
-				$_SESSION['login'] = 1;
+				$_SESSION['login'] = 1;				
 	  			$_SESSION['success'] = "You are now logged in";
+	  			$_SESSION['UserId'] = $row['UserId'];
 	  			header('location: index.php');
 			} else {
 				array_push($errors, "Invalid username or password");

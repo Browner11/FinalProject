@@ -110,6 +110,9 @@ nav li a {
 
 nav li a:hover {
     background-color: #111;
+    color: #ff2b00;
+    
+
 }
 
 nav li a:focus {
@@ -187,6 +190,12 @@ nav li a:focus {
 }
 
 .comments {
+	width: 85%;
+	margin: 10px auto;
+	border: 2px solid black;
+}
+
+.newcomment {
 	width: 85%;
 	margin: 10px auto;
 	border: 2px solid black;
