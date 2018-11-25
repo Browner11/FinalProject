@@ -25,6 +25,26 @@
       $statement->execute();
     }  
   }
+
+  if(isset($_GET['Genre']))
+  {
+    $genre = $_GET['Genre'];  
+
+    if($genre == "AllGenres"){
+
+      $query = "SELECT * FROM book" ;
+
+      $statement = $db->prepare($query);
+      $statement->execute();
+    }
+    else
+    {
+      $query = "SELECT * FROM book WHERE Genre = '$genre'" ;
+
+      $statement = $db->prepare($query);
+      $statement->execute();
+    }   
+  }
  
 ?>
 
@@ -40,10 +60,7 @@
 
   
   <h3>Search Results</h3>
-  <?= $search ?>
-  <?= $genre ?>
-
-    <fieldset>
+      <fieldset>
             <?php if ($statement->rowCount() == 0) :?>
                 <h1>No books found matching search terms.</h1>
             <?php else :?>

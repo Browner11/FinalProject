@@ -11,13 +11,27 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<img id="logo" src="images/Bookishly_logo.png" alt="Logo">
   <nav>    
     <ul>
       <li><a class="left" id="currentpage" href="index.php">Home</a></li>
-      <li><a class="left" href="genres.php">Genres</a></li>  	   
+      <div class="dropdown">
+      	<button class="dropbtn">Genres 
+      	<i class="fa fa-angle-down"></i>
+    	</button>
+          	<div class="dropdownContent">
+      		<ul>
+      			<li><a href="search.php?Genre=AllGenres">All Genres</a></li>
+      			<?php while($row = $genreSearchStatement->fetch()):?>
+        		<li><a href="search.php?Genre=<?=$row['Genre'] ?>"><?=$row['Genre'] ?></a></li>
+        		<?php endwhile ?> 
+        	</ul>
+      	</div>
+  	  </div>
+      
       <?php if(isset($_SESSION['login'])): ?>
       	<li><a class="left" href="newBook.php">New Book</a></li>
         <li class="right"><a href="index.php?logout='1'">Logout</a></li>

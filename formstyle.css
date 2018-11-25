@@ -104,7 +104,7 @@ nav li a {
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 16px;
     text-decoration: none;
 }
 
@@ -213,5 +213,53 @@ nav li a:focus {
 	float: right;
 }
 
+.dropdown {
+	float: left;
+	overflow: hidden;
+}
 
+.dropdown:hover {
+
+    background-color: #111;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdownContent li a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown:hover .dropdownContent {
+	display: block;	
+    background-color: #111;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdownContent a:hover {
+  background-color: #ddd;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px; 
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
 
