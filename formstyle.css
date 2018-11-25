@@ -77,6 +77,10 @@ body {
 	color: red;
 }
 
+ul {
+	list-style-type: none;
+}
+
 nav {
 	margin: 0 auto;
     padding: 0;
@@ -153,27 +157,60 @@ nav li a:focus {
 }
 
 .search {
-  width: 30%;
-  position: relative;
-  display: inline;
+    width: 30%;
+    position: relative;
+    display: inline;
     text-align: center;
     margin: 14px 16px;
     text-decoration: none;
 }
 
 .searchTerm {
-  float: left;
-  width: 100%;
-  border: 3px solid #00B4CC;
-  padding: 5px;
-  height: 20px;
-  border-radius: 5px;
-  outline: none;
-  color: #9DBFAF;
+	float: left;
+	width: 100%;
+	border: 3px solid #00B4CC;
+	padding: 5px;
+	height: 20px;
+	border-radius: 5px;
+	outline: none;
+	color: #9DBFAF;
 }
 
 .searchTerm:focus{
-  color: #00B4CC;
+    color: #00B4CC;
+}
+
+.bookcontent {
+	width: 85%;
+	margin: 10px auto;
+	border: 2px solid black;
+}
+
+.comments {
+	width: 85%;
+	margin: 10px auto;
+	border: 2px solid black;
+}
+
+.bookimage{
+	width: 35%;
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid black;
+	display: inline-block;
+}
+
+.bookimage img {
+	display: block;
+}
+
+.bookdetails {
+	width: 56%;
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid black;
+	display: inline-block;
+	float: right;
 }
 
 
