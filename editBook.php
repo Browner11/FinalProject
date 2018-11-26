@@ -102,7 +102,7 @@ if(isset($_POST['editBook'])){
 
         //if there are no errors, save book to the database
         if (count($errors) == 0) {
-            $query = "UPDATE book SET Title = '$title', Author = '$author', ReleaseYear = '$released', Genre = '$genre', CoverImg = '$image', DateEdited =CURRENT_TIMESTAMP WHERE ISBN = '$ISBN'";
+            $query = "UPDATE book SET Title = '$title', Author = '$author', ReleaseYear = '$released', Genre = '$genre', DateEdited =CURRENT_TIMESTAMP WHERE ISBN = '$ISBN'";
 
             $statement = $db->prepare($query);
             $statement->execute();
@@ -143,11 +143,7 @@ if(isset($_POST['editBook'])){
         <!-- errors -->
         <?php include('errors.php'); ?>
         <?php while($row = $statement->fetch()):?>
-        <div class="input-group">
-            <label for="file">Cover Image:</label>            
-            <input type="file" id="file" name="file">           
-        </div>
-        
+                
         <div class="input-group">
             <label for="genre">Genre:</label>
             <select id="genre" name="genre">

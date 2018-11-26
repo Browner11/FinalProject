@@ -136,9 +136,7 @@ if(isset($_POST['newBook'])){
 			<label for="genre">Genre:</label>
 			<select id="genre" name="genre">
 				<?php while($row = $genreStatement->fetch()):?>
-                    <option value="<?= $row['Genre'] ?>">
-                      <?= $row['Genre'] ?>
-                    </option>
+                    <option value="<?= $row['Genre'] ?>"><?= $row['Genre'] ?></option>
                 <?php endwhile ?> 
 			</select> 
 		</div>

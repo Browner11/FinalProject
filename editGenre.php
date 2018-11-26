@@ -86,7 +86,7 @@ if(isset($_POST['editGenre'])){
                 </div>
                 <button type="submit" id="addGenre" name="addGenre">Add Genre</button>
                 <button type="submit" name="editGenre">Edit Genre</button>
-                <button type="submit" name="deleteGenre">Delete Genre</button> 
+                <button type="submit" name="deleteGenre" onclick="return confirm('Are you sure you want to delete this item? This action can not be undone.');">Delete Genre</button> 
                 <br>  
                 <p class="message">Warning: Delete can not be undone.</p>
             <?php else : ?>

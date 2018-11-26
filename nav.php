@@ -1,9 +1,12 @@
 <?php
  
   $genreSearch = "SELECT * FROM genre";
-
   $genreSearchStatement = $db->prepare($genreSearch);
   $genreSearchStatement->execute();
+
+  $genreSearchNav = "SELECT * FROM genre";
+  $genreSearchStatementNav = $db->prepare($genreSearchNav);
+  $genreSearchStatementNav->execute();
 
 ?>
 
@@ -48,9 +51,9 @@
  	  <form name="navsearch" id="navsearch" method="post" action="search.php" >
  	  	<select form="navsearch" id="searchgenre" name="searchgenre">
  	  			<option value="All Genres">All Genres</option>
-				<?php while($row = $genreSearchStatement->fetch()):?>
-                    <option value="<?= $row['Genre'] ?>">
-                      <?= $row['Genre'] ?>
+				<?php while($searchRow = $genreSearchStatementNav->fetch()):?>
+                    <option value="<?= $searchRow['Genre'] ?>">
+                      <?= $searchRow['Genre'] ?>
                     </option>
                 <?php endwhile ?> 
 		</select> 

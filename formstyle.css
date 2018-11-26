@@ -190,15 +190,42 @@ nav li a:focus {
 }
 
 .comments {
-	width: 85%;
+	width: 60%;
 	margin: 10px auto;
-	border: 2px solid black;
+}
+
+.commentblock {
+	background: white;
+	font-size: 16px;
+	padding-top: 20px;
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	border: 1px solid black;
+	margin: 8px;
+	text-align: center;
+}
+
+.commentblock p {
+	font-size: 12px;
+	text-align: right;
+	border-top: 1px solid black;
+	padding: 0px;
+	margin-top: 10px;
+}
+
+.commentDelete {
+	display: inline-block;
 }
 
 .newcomment {
 	width: 85%;
 	margin: 10px auto;
-	border: 2px solid black;
+}
+
+.center {
+	margin: 0 auto;
+	width: 560px;
 }
 
 .bookimage{
