@@ -8,6 +8,10 @@
 	$password = "";
 	$errors = array();
 
+	if (!isset($_SESSION['login'])) {
+		$_SESSION['UserType'] = "0";
+	}
+
  // if register button is clicked
 if(isset($_POST['register'])){
  	$username = $_POST['username'];
@@ -39,8 +43,6 @@ if(isset($_POST['register'])){
   		$statement->execute();
 
   		$_SESSION['username'] = $username;
-  		$_SESSION['login'] = 1;
-  		$_SESSION['success'] = "You are now logged in";
   		header('location: index.php');
 		}
 }
@@ -78,6 +80,7 @@ if (isset($_POST['login'])) {
 				$_SESSION['login'] = 1;				
 	  			$_SESSION['success'] = "You are now logged in";
 	  			$_SESSION['UserId'] = $row['UserId'];
+	  			$_SESSION['UserType'] = $row['UserType'];
 	  			header('location: index.php');
 			} else {
 				array_push($errors, "Invalid username or password");
@@ -92,9 +95,10 @@ if (isset($_POST['login'])) {
 // logout
 
 if (isset($_GET['logout'])) {
-	session_destroy();
 	unset($_SESSION['username']);
 	unset($_SESSION['login']);
+	unset($_SESSION['UserType']);
+	session_destroy();
 	header('location: login.php');
 }
 

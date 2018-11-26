@@ -14,6 +14,8 @@
         $ISBN = $_SESSION['ISBN'];
      }
 
+
+
 	$query = "SELECT * FROM book WHERE ISBN = $ISBN";
 
      // statment is prepared for execution
@@ -25,6 +27,8 @@
      $commentQuery = "SELECT * FROM comment WHERE ISBN = $ISBN";
      $commentStatement = $db->prepare($commentQuery);
      $commentStatement->execute();
+
+
 
     if(isset($_POST['postComment'])){  
         $UserId = $_SESSION['UserId'];
@@ -56,6 +60,7 @@
             	<h1>No book found.</h1>
             <?php else :?>
                 <?php while($row = $statement->fetch()):?>
+                <?php  $_SESSION['editGenre'] = $row['Genre']; ?>
                         <img src="uploads/<?=$row['CoverImg'] ?>">                      	
         </div>
         <div class="bookdetails">
@@ -67,6 +72,13 @@
                               <?= "<br>";?>
                             </li>
                         </ul>
+                        <?php if ($_SESSION['UserType'] == "1") :?>
+                        <form method="post" action="editBook.php">
+                        <button type="submit">Edit Book Details</button>
+                        <form method="post" action="editBook.php">
+                        <button type="submit">Delete Book</button>
+                        </form>
+                        <?php endif ?>
                     
                 <?php endwhile ?>    
              <?php endif?>             

@@ -24,6 +24,7 @@
     	</button>
           	<div class="dropdownContent">
       		<ul>
+      			<li><a href="editGenre.php">Add Genre</a></li>
       			<li><a href="search.php?Genre=AllGenres">All Genres</a></li>
       			<?php while($row = $genreSearchStatement->fetch()):?>
         		<li><a href="search.php?Genre=<?=$row['Genre'] ?>"><?=$row['Genre'] ?></a></li>
@@ -35,7 +36,11 @@
       <?php if(isset($_SESSION['login'])): ?>
       	<li><a class="left" href="newBook.php">New Book</a></li>
         <li class="right"><a href="index.php?logout='1'">Logout</a></li>
+        <?php if($_SESSION['UserType'] == "1"): ?>
+        <li class="right"><a href="admin.php">Admin Tools</a></li>
+    	<?php endif ?>
         <li class="welcome">Welcome, <?=$_SESSION['username'] ?></li>
+        
       <?php else : ?>
         <li><a class="right" href="register.php">Register</a></li>
         <li><a class="right" href="login.php">Login</a></li>

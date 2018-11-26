@@ -32,11 +32,6 @@
 <body>  
   <?php include('nav.php'); ?>
 
-  <?php if(isset($_SESSION['success'])): ?>
-    <h3><?= $_SESSION['success'] ?></h3>
-    <?php unset($_SESSION['success']); ?>
-  <?php endif ?>
-
   <h3>Recently Posted Books</h3>
 
     <fieldset>

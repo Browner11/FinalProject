@@ -7,8 +7,12 @@
   // Reguire database connection
   //require('connect.php');
 
-  require('server.php');
-  require('authenticate.php');
+  require('server.php'); 
+
+  if($_SESSION['UserType'] != "1")
+  {
+    header("location: index.php");
+  }
 
   // gather all data from our book table
   $query = "SELECT * FROM user";
