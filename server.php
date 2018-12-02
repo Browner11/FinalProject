@@ -43,6 +43,16 @@ if(isset($_POST['register'])){
   		$statement->execute();
 
   		$_SESSION['username'] = $username;
+
+
+
+  		
+		
+		$subject = "Welcome";
+		$txt = "Hello" . $username . ". Thanks for registering an account with Bookishly!";
+		$headers = "From: webmaster@bookishly.com";		
+		mail($email,$subject,$txt,$headers);
+
   		header('location: index.php');
 		}
 }

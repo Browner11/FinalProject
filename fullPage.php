@@ -38,9 +38,10 @@
 
     if(isset($_POST['postComment'])){  
         $UserId = $_SESSION['UserId'];
-        $Comment = $_POST['comment'];       
+        $Comment = $_POST['comment'];   
+        $User = $_SESSION['username'];  
         
-        $commentQuery = "INSERT INTO comment (ISBN, UserId, Comment) VALUES ('$ISBN', '$UserId', '$Comment')";
+        $commentQuery = "INSERT INTO comment (ISBN, UserId, User, Comment) VALUES ('$ISBN', '$UserId', '$User', '$Comment')";
 
         $commentStatement = $db->prepare($commentQuery);
         $commentStatement->execute();            
