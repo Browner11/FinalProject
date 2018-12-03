@@ -4,9 +4,14 @@
     Date: November 3, 2018
     Database connection script
 */
-     define('DB_DSN','mysql:host=localhost;dbname=serverside;charset=utf8');
+    define('DB_DSN','mysql:host=db4free.net;dbname=brycebrownwebdev;charset=utf8');
+     define('DB_USER','brycebrown11');
+     define('DB_PASS','Aab3gj7c');
+
+
+    /* define('DB_DSN','mysql:host=localhost;dbname=serverside;charset=utf8');
      define('DB_USER','serveruser');
-     define('DB_PASS','gorgonzola7!');      
+     define('DB_PASS','gorgonzola7!'); */     
      
      try {
          // Try creating new PDO connection to MySQL.
