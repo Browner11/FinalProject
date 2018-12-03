@@ -52,9 +52,9 @@ if(isset($_POST['editGenre'])){
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title></title>
+    <title>Genre Editor</title>
     <link rel="stylesheet" type="text/css" href="formstyle.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>

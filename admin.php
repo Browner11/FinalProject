@@ -36,9 +36,9 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title></title>
+  <title>Admin Tools</title>
 <link rel="stylesheet" type="text/css" href="formstyle.css">
 <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>
@@ -69,7 +69,7 @@
     <fieldset>  
     <form method="post" action="admin.php">
     	<div class="input-group">
-      <label for="deletebox">User to Delete:</label>
+      <label for="deleteuser">User to Delete:</label>
     	<input type="text" name="deleteuser" id="deleteuser">
       </div>
       <div class="input-group">

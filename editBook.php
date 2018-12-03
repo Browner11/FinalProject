@@ -135,9 +135,9 @@ if(isset($_POST['editBook'])){
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title></title>
+    <title>Edit Book</title>
     <link rel="stylesheet" type="text/css" href="formstyle.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>

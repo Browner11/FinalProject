@@ -120,9 +120,9 @@ if(isset($_POST['newBook'])){
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Submit Book</title>
+	<title>New Book</title>
 	<link rel="stylesheet" type="text/css" href="formstyle.css">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>

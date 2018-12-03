@@ -74,9 +74,9 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title></title>
+	<title>Book Details</title>
 	<link rel="stylesheet" type="text/css" href="formstyle.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>
@@ -94,9 +94,11 @@
         <div class="bookdetails">
                         <ul>
                             <li>
-                              <?= "<h4>" . $row['Title'] . "</h4>";?>
-                              <?= "<p>" . $row['Author'] . "</p>";?>
-                              <?= "<p>" . $row['Genre'] . "</p>";?>
+                              <?= "<h4> Title: " . $row['Title'] . "</h4>";?>
+                              <?= "<br>";?>
+                              <?= "<p> Author: " . $row['Author'] . "</p>";?>
+                              <?= "<p> Genre: " . $row['Genre'] . "</p>";?>
+                              <?= "<p> Released: " . $row['ReleaseYear'] . "</p>";?>
                               <?= "<br>";?>
                             </li>
                         </ul>
@@ -119,7 +121,7 @@
         <?php else :?>
                 <form class="center" method="post" action="fullPage.php">
                    
-                    <div class="input-group">
+                    <div  id="comment" class="input-group">
                         <label for="Comment">What do you think about this book?</label>
                         <textarea rows="5" cols="75" name="comment" id="comment"></textarea>
                     </div>

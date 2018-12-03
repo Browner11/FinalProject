@@ -5,7 +5,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>Register</title>
 	<link rel="stylesheet" type="text/css" href="formstyle.css">

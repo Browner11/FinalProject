@@ -23,9 +23,9 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title></title>
+  <title>Home Page</title>
 
   <link rel="stylesheet" type="text/css" href="formstyle.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
@@ -43,7 +43,7 @@
                     <?php while($row = $statement->fetch()):?>
                         <li>
                           <?php $rowID = $row['ISBN'] ?>
-                          <?= "<a href=fullPage.php?ISBN=$rowID>" . $row['Title'] . "</a>" . " by " . $row['Author'] ;?>
+                          <?= '<a href="fullPage.php?ISBN=' . $rowID .'">' . $row['Title'] . '</a>' . ' by ' . $row['Author'] ;?>
                         </li>
                     <?php endwhile ?>    
                </ul>

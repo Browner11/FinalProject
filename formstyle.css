@@ -201,6 +201,7 @@ nav li a:focus {
 .comments {
 	width: 60%;
 	margin: 10px auto;
+	text-align: center;
 }
 
 .commentblock {
@@ -229,7 +230,7 @@ nav li a:focus {
 
 .newcomment {
 	width: 85%;
-	margin: 10px auto;
+	margin: 40px auto;
 }
 
 .center {
@@ -241,7 +242,6 @@ nav li a:focus {
 	width: 35%;
 	padding: 10px;
 	margin: 10px;
-	border: 1px solid black;
 	display: inline-block;
 }
 
@@ -251,12 +251,13 @@ nav li a:focus {
 
 .bookdetails {
 	width: 56%;
-	padding: 10px;
+	padding: 40px 10px 10px 10px;
 	margin: 10px;
-	border: 1px solid black;
 	display: inline-block;
 	float: right;
+	font-size: 200%;
 }
+
 
 .dropdown {
 	float: left;

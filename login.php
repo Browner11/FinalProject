@@ -6,9 +6,9 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Register</title>
+	<title>Login</title>
 	<link rel="stylesheet" type="text/css" href="formstyle.css">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>
@@ -25,7 +25,6 @@
 		<div class="input-group">
 			<label for="password">Password</label>
 			<input type="password" id="password" name="password">
-		</div>		
 		</div>
 		<div class="input-group">
 			<button type="submit" id="login" name="login" class="btn">Login </button>
