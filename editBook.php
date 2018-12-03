@@ -139,6 +139,7 @@ if(isset($_POST['editBook'])){
 <head>
     <title></title>
     <link rel="stylesheet" type="text/css" href="formstyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>
 <body>
     <?php include('nav.php'); ?>

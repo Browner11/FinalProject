@@ -6,6 +6,15 @@
 body {
 	font-size: 100%;
 	background-color: #006699;
+	font-family: 'Quicksand', sans-serif;
+}
+
+body a:visited {
+	color: #CCCCCC;
+}
+
+body a {
+	color: #CCCCCC;
 }
 
 #logo {
