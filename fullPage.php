@@ -38,7 +38,7 @@
 
     if(isset($_POST['postComment'])){  
         $UserId = $_SESSION['UserId'];
-        $Comment = $_POST['comment'];   
+        $Comment = filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_FULL_SPECIAL_CHARS);  
         $User = $_SESSION['username'];  
         
         $commentQuery = "INSERT INTO comment (ISBN, UserId, User, Comment) VALUES ('$ISBN', '$UserId', '$User', '$Comment')";

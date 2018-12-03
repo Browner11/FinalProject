@@ -79,9 +79,20 @@ if(isset($_POST['editBook'])){
     if (isset($_SESSION['login'])) {
         
         $genre = $_POST['genre'];
-        $title = $_POST['title'];
-        $author = $_POST['author'];
-        $released = $_POST['released'];
+        $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $author = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if ( isset($_POST['released']) && is_numeric($_POST['released'])) {         
+            $released = filter_input(INPUT_POST, 'released', FILTER_VALIDATE_INT, array(
+        'options' => array(
+            'min_range' => 0, 
+            'max_range' => date("Y")
+        )));
+        }
+        else
+        {
+            $released = 0;
+            array_push($errors, "Please make sure the release date is between 0 and the current year");
+        }
         $image = $_FILES['file']['name'];
 
 

@@ -14,10 +14,17 @@
 
  // if register button is clicked
 if(isset($_POST['register'])){
- 	$username = $_POST['username'];
- 	$email = $_POST['email'];
- 	$password = $_POST['password'];
- 	$confirmPassword = $_POST['confirmPassword'];
+
+ 	$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+ 	if (filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL) && isset($_POST['email'])) {
+ 		$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+ 	}
+ 	else
+ 	{
+ 		array_push($errors, "Please enter a valid email");
+ 	}
+ 	$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+ 	$confirmPassword = filter_input(INPUT_POST, 'confirmPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
  	//ensure form fields are filled properly
  	if (empty($username)) {
@@ -60,8 +67,8 @@ if(isset($_POST['register'])){
 
 // user login from login page
 if (isset($_POST['login'])) {
-	$username = $_POST['username'];
- 	$password = $_POST['password'];
+	$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+ 	$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 
  	//ensure form fields are filled properly

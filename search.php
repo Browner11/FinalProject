@@ -6,7 +6,9 @@
   // if search button is clicked
   if(isset($_POST['search'])){  
 
-    $search = "%" . $_POST['searchbar'] . "%";
+    $searchbar = filter_input(INPUT_POST, 'searchbar', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    $search = "%" . $searchbar . "%";
     $genre = $_POST['searchgenre'];
   
 
@@ -28,8 +30,8 @@
 
   if(isset($_GET['Genre']))
   {
-    $genre = $_GET['Genre'];  
-
+    $genre =filter_input(INPUT_GET, 'Genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    
     if($genre == "AllGenres"){
 
       $query = "SELECT * FROM book" ;

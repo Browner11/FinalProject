@@ -12,7 +12,7 @@
 
 // if Add genre button is submitted
 if(isset($_POST['addGenre'])){
-    $genre = $_POST['genre'];
+    $genre = filter_input(INPUT_POST, 'genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
             $query = "INSERT INTO genre (genre) VALUES ('$genre')";
             $statement = $db->prepare($query);
@@ -26,7 +26,7 @@ if(isset($_POST['addGenre'])){
 if(isset($_POST['deleteGenre'])){
     $genreRadio = $_POST['genreRadio'];    
             
-    $deleteQuery = "DELETE FROM genre WHERE genre = '$genreRadio' LIMIT 1";
+    $deleteQuery = "DELETE FROM genre WHERE genreId = '$genreRadio' LIMIT 1";
 
     $deleteStatement = $db->prepare($deleteQuery);
     $deleteStatement->execute();
@@ -36,9 +36,9 @@ if(isset($_POST['deleteGenre'])){
 
 if(isset($_POST['editGenre'])){
     $genreRadio = $_POST['genreRadio'];   
-    $genre = $_POST['genre']; 
+    $genre = filter_input(INPUT_POST, 'genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
-    $deleteQuery = "UPDATE genre SET genre = '$genre' WHERE genre = '$genreRadio'";
+    $deleteQuery = "UPDATE genre SET genre = '$genre' WHERE genreId = '$genreRadio'";
 
     $deleteStatement = $db->prepare($deleteQuery);
     $deleteStatement->execute();
@@ -66,7 +66,7 @@ if(isset($_POST['editGenre'])){
         
         <fieldset id="genreRadio">
             <?php while($genreRow = $genreStatement->fetch()):?>
-        <input type="radio" name="genreRadio" value="<?= $genreRow['Genre'] ?>"> <?= $genreRow['Genre'] ?><br>
+        <input type="radio" name="genreRadio" value="<?= $genreRow['GenreId'] ?>"> <?= $genreRow['Genre'] ?><br>
             <?php endwhile ?>
         </fieldset>
         <?php else : ?>
